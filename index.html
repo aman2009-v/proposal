@@ -293,7 +293,7 @@
                 <h1>So... can you be my girlfriend again?</h1>
                 <div class="choice-buttons">
                     <button class="btn-yes" onclick="handleChoice('yes')">Yes ❤️</button>
-                    <button class="btn-no" onclick="handleChoice('no')">Let's stay friends 🙂</button>
+                        <button class="btn-no" id="btnNo" onclick="handleNoClick(event)">Let's stay friends 🙂</button>
                 </div>
             </div>
         </div>
@@ -352,7 +352,8 @@
     </div>
 
     <script>
-        let userChoice = '';
+           let userChoice = '';
+           let noClickCount = 0;
 
         function nextPage(pageNum) {
             const currentPage = document.querySelector('.page.active');
@@ -364,12 +365,32 @@
             }, 100);
         }
 
+
         function handleChoice(choice) {
             userChoice = choice;
             if (choice === 'yes') {
                 nextPage(10);
             } else {
                 nextPage(11);
+            }
+        }
+
+        function handleNoClick(e) {
+            noClickCount++;
+            if (noClickCount <= 2) {
+                // Move button to a random position within its parent
+                const btn = e.target;
+                const parent = btn.parentElement;
+                const parentRect = parent.getBoundingClientRect();
+                // Random left/top within parent (max 60% left/top)
+                const left = Math.random() * 60;
+                const top = Math.random() * 60;
+                btn.style.position = 'relative';
+                btn.style.left = left + '%';
+                btn.style.top = top + '%';
+                btn.style.transition = 'left 0.3s, top 0.3s';
+            } else {
+                handleChoice('no');
             }
         }
 
