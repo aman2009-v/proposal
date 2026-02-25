@@ -1,0 +1,119 @@
+/* Global resets */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#ff9a9e 0%,#fad0c4 50%,#a18cd1 100%,#000000 100%);
+    min-height:100vh;
+    color:#fff;
+    overflow-x:hidden;
+}
+.content{
+    padding:2rem;
+    text-align:center;
+}
+.centered{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+.title{
+    font-family:'Dancing Script',cursive;
+    font-size:2.5rem;
+    text-shadow:0 0 10px rgba(255,255,255,.6);
+}
+.btn{
+    display:inline-block;
+    padding:0.75rem 2rem;
+    margin-top:1.5rem;
+    font-size:1.1rem;
+    text-decoration:none;
+    color:#fff;
+    border:2px solid #fff;
+    border-radius:50px;
+    cursor:pointer;
+    transition:all .3s ease;
+    position:relative;
+    overflow:hidden;
+}
+.btn:hover{
+    background:rgba(255,255,255,0.2);
+    transform:scale(1.05);
+}
+.glowing{
+    animation:glow 1.5s infinite alternate;
+}
+@keyframes glow{
+    from{box-shadow:0 0 5px #fff,0 0 10px #ff9a9e;}
+    to{box-shadow:0 0 20px #fff,0 0 30px #a18cd1;}
+}
+.fade-in{
+    animation:fadeIn 1.2s ease forwards;
+    opacity:0;
+}
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+.story-text, .message-text{
+    font-size:1.2rem;
+    line-height:1.6;
+    max-width:600px;
+    margin:0 auto;
+    white-space:pre-wrap;
+}
+.question-text{
+    font-size:2rem;
+    margin-bottom:2rem;
+    font-family:'Dancing Script',cursive;
+}
+.button-group{
+    display:flex;
+    justify-content:center;
+    gap:1.5rem;
+    flex-wrap:wrap;
+}
+.yes{
+    background:#ff6b81;
+    border-color:#ff6b81;
+}
+.no{
+    background:#aaa;
+    border-color:#aaa;
+}
+.final-text{
+    font-size:2rem;
+    font-family:'Dancing Script',cursive;
+    text-shadow:0 0 15px rgba(255,255,255,.7);
+}
+#confettiCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+}
+@media(max-width:600px){
+    .title{font-size:2rem;}
+    .question-text{font-size:1.5rem;}
+    .btn{font-size:1rem;padding:.6rem 1.5rem;}
+    .story-text, .message-text{font-size:1rem;}
+}
+/* floating hearts */
+.heart{
+    position:fixed;
+    width:20px;
+    height:20px;
+    background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 29.6"><path fill="red" d="M23.6,0c-3.4,0-6.4,2-8,5C13.8,2,10.8,0,7.4,0C3,0,0,3,0,7.4c0,4.8,4.1,8.7,10.3,14.1l5.7,5l5.7-5C27.9,16.1,32,12.2,32,7.4C32,3,29,0,23.6,0z"/></svg>');
+    background-size:contain;
+    animation:floatUp linear infinite;
+    opacity:0.8;
+}
+@keyframes floatUp{
+    from{transform:translateY(0) scale(1);}
+    to{transform:translateY(-100vh) scale(1.5);opacity:0;}
+}
